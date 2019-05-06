@@ -1,11 +1,12 @@
 module.exports = {
   apps : [{
-    name: 'demo_shopping_mall',
-    script: 'app.js',
-    args: 'one two',
+    cwd:"./",
+    name: 'main',
+    interpreter: './node_modules/.bin/ts-node',
+    script: 'src/main.ts',
     instances: 1,
     autorestart: true,
-    watch: false,
+    watch: ["src"],
     max_memory_restart: '1G',
     env: {
       NODE_ENV: 'development'
