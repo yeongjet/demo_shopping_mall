@@ -1,0 +1,24 @@
+改了PM2的配置文件(ecosystem.config.js)，要删除进程再启动，配置才会有效
+
+在package.json中如何查找未使用的npm包？
+使用npm-check
+
+docker image 里面没有 shell 的时候怎么查看文件内容？
+docker exec -it container bash
+
+把 docker error 日志都写到指定文件：
+docker logs -t <CONTAINER> | grep error >> logs_error.txt
+
+//删除全部容器
+docker rm $(docker ps -aq)
+
+//删除tag为none的镜像
+sudo docker rmi $(docker images -f "dangling=true" -q)
+
+docker run --rm -v D:/program/demo_shopping_mall/volume/web:/volume/web -p 127.0.0.1:5000:3000 web
+
+Error:
+C:\Program Files\Docker\Docker\Resources\bin\docker.exe: Error response from daemon: driver failed programming external connectivity on endpoint nervous_murdock (6591f144509b1f83bb1bc584803f31e32abd296ceab6c5f9d58784bfd8af7e88): Error starting userland proxy: mkdir /port/tcp:127.0.0.1:5000:tcp:172.17.0.2:3000: input/output error.
+重启docker
+
+docker volume挂载点只能是绝对路径
