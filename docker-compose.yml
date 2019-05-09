@@ -12,5 +12,26 @@ services:
       - D:/program/demo_shopping_mall/volume/redis:/volume/redis
   postgres:
     image: postgres:latest
-    volumes: 
-      - D:/program/demo_shopping_mall/volume/postgres:/volume/postgres
+    ports:
+     - 15320:5432
+    networks:
+      mynet:
+        ipv4_address: '179.19.0.12'
+    environment:
+        POSTGRES_PASSWORD: dsm123  
+    volumes:
+      - pgdata:/var/lib/postgresql:Z
+
+networks:
+  mynet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 179.19.0.0/16
+
+volumes:
+    pgdata:
+      driver_opts:
+        type: none
+        device: D:\program\demo_shopping_mall\volume\postgres\pgdata
+        o: bind
