@@ -23,10 +23,15 @@ C:\Program Files\Docker\Docker\Resources\bin\docker.exe: Error response from dae
 
 docker volume挂载点只能是绝对路径
 
+大部分情况下使用docker-compose up来启动服务，docker-compose run启动的话无法端口映射
+
 连接docker里的postgresql
 docker pull postgres
-docker run --name postgres -v D:/program/demo_shopping_mall/volume/postgres/data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=postgres -d -p 15320:5432 postgres
+docker run --rm --name postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=postgres -d -p 15320:5432 postgres
+
 docker exec -it postgres psql -U postgres
+docker volume create --name postgresdata -d local 
+
 \password postgres 
 psql -h 127.0.0.1 -p 15320
 CREATE USER demo_shopmall WITH PASSWORD 'dsm123';
