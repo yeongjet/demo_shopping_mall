@@ -1,10 +1,9 @@
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
-import { HttpExceptionFilter } from './common/filters/http.exception.filter'
+import * as fs from 'fs'
 
 (async ()=>{
-    console.log('start up..')
+    console.log('injectissue..')
     const app = await NestFactory.create(AppModule)
-    app.useGlobalFilters(new HttpExceptionFilter())
     await app.listen(3000)
 })()

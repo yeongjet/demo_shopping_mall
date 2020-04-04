@@ -33,7 +33,7 @@ docker exec -it postgres psql -U postgres
 docker volume create --name postgresdata -d local 
 
 \password postgres 
-psql -h 127.0.0.1 -p 15320
+psql -h 127.0.0.1 -p 15320 -U postgres
 CREATE USER demo_shopmall WITH PASSWORD 'dsm123';
 CREATE DATABASE demo_shopmall_test OWNER demo_shopmall;
 GRANT ALL PRIVILEGES ON DATABASE demo_shopmall_test to demo_shopmall;

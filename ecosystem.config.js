@@ -1,12 +1,13 @@
 module.exports = {
   apps : [{
-    cwd:"./",
-    name: 'main',
+    cwd:'./',
+    name: 'web',
     interpreter: './node_modules/.bin/ts-node',
     script: 'src/main.ts',
     instances: 1,
     autorestart: true,
-    watch: ["src"],
+    watch: ['src'],
+    exec_mode: 'cluster',
     max_memory_restart: '1G',
     env: {
       NODE_ENV: 'development'
@@ -22,10 +23,10 @@ module.exports = {
     args: 'one two',
     instances: 1,
     autorestart: true,
-    watch: ["test"],
+    watch: ['test'],
     watch_delay: 1000,
     log_date_format: 'YYYY-MM-DD HH:mm:ss',
-    ignore_watch : ["node_modules"],
+    ignore_watch : ['node_modules'],
     max_memory_restart: '1G',
     env: {
       NODE_ENV: 'development'
